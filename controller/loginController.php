@@ -1,5 +1,12 @@
 <?php
 
+    if(isset($_POST['emailLogin']) && isset($_POST['passwordLogin'])){
+
+        $emailLogin= $_POST['emailLogin'];
+        $passwordLogin= $_POST['passwordLogin'];
+
+    }
+
     try{
 
     require("model/DataBase.php");
