@@ -1,8 +1,8 @@
 <?php include("templates/header.php");?>
-<section class="vh-100" style="background-color: #eee;">
 <div style="box-sizing: content-box;width: 40%;">
 <?php include("../controller/registerController.php");?>
 </div>
+<section class="vh-100" style="background-color: #eee;">
   <div class="container h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-lg-12 col-xl-11">

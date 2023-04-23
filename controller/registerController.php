@@ -66,7 +66,7 @@ $result->execute(array(":nam"=>$name, ":surnam"=>$surname,
 ":emai"=>$email, ":passwor"=>$password, "phon"=>$phone));
 echo "<div class='alert alert-success'>Registro insertado con éxito</div>";
     }catch(Exception $e){
-        die ("Error de conexión ".$e->getMessage());
+        echo "Error de conexión ".$e->getMessage();
     }finally{
         $connect=null;
     }
