@@ -7,7 +7,6 @@
     }catch(Exception $e){
         die("Error de conexión ".$e->getMessage());
     }finally{
-        $connection=null;
     }
 
 
