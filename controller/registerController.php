@@ -57,16 +57,31 @@ if ($_POST['name']!="" && $_POST['surname']!="" && $_POST['email']!=""
 try{
 
 $connect = DataBase::conexion();
+$queryFind = "SELECT email FROM users WHERE email = :emai";
+$resultFind = $connect->prepare($queryFind);
+$resultFind->execute(array(":emai"=>$email));
+$numRowsFind = $resultFind->rowCount();
+if($numRowsFind>0){
+    echo "<div class='alert alert-danger'>El usuario ya existe</div>";
+}else{
 $query = "INSERT INTO users (name, surname, email, password, telephone)
 VALUES (:nam, :surnam, :emai, :passwor, :phon)";
 $result = $connect->prepare($query);
 $result->execute(array(":nam"=>$name, ":surnam"=>$surname, 
 ":emai"=>$email, ":passwor"=>$password, "phon"=>$phone));
 echo "<div class='alert alert-success'>Registro insertado con éxito</div>";
+$name ="";
+$surname ="";
+$email ="";
+$phone ="";
+$password = "";
+$password2 = "";
+$validNumber = false;}
     }catch(Exception $e){
         echo "Error de conexión ".$e->getMessage();
     }finally{
         $connect=null;
+
     }
 
 
