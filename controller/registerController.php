@@ -1,7 +1,5 @@
 <?php
 
-require("../model/DataBase.php");
-
 if (isset($_POST['name']) && isset($_POST['surname']) && isset($_POST['email']) &&
 isset($_POST['phone']) && isset($_POST['password']) && isset($_POST['password2'])){
 
@@ -76,5 +74,6 @@ echo "<div class='alert alert-success'>Registro insertado con éxito</div>";
         echo "<div class='alert alert-danger'>Las dos contraseñas no coinciden</div>";
      }
      }
+     
     }
 ?>
