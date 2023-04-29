@@ -70,13 +70,7 @@ $result = $connect->prepare($query);
 $result->execute(array(":nam"=>$name, ":surnam"=>$surname, 
 ":emai"=>$email, ":passwor"=>$password, "phon"=>$phone));
 echo "<div class='alert alert-success'>Registro insertado con éxito</div>";
-$name ="";
-$surname ="";
-$email ="";
-$phone ="";
-$password = "";
-$password2 = "";
-$validNumber = false;}
+}
     }catch(Exception $e){
         echo "Error de conexión ".$e->getMessage();
     }finally{
