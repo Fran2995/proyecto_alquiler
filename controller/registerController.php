@@ -1,7 +1,5 @@
 <?php
 
-require("../model/DataBase.php");
-
 if (isset($_POST['name']) && isset($_POST['surname']) && isset($_POST['email']) &&
 isset($_POST['phone']) && isset($_POST['password']) && isset($_POST['password2'])){
 
@@ -59,16 +57,25 @@ if ($_POST['name']!="" && $_POST['surname']!="" && $_POST['email']!=""
 try{
 
 $connect = DataBase::conexion();
+$queryFind = "SELECT email FROM users WHERE email = :emai";
+$resultFind = $connect->prepare($queryFind);
+$resultFind->execute(array(":emai"=>$email));
+$numRowsFind = $resultFind->rowCount();
+if($numRowsFind>0){
+    echo "<div class='alert alert-danger'>El usuario ya existe</div>";
+}else{
 $query = "INSERT INTO users (name, surname, email, password, telephone)
 VALUES (:nam, :surnam, :emai, :passwor, :phon)";
 $result = $connect->prepare($query);
 $result->execute(array(":nam"=>$name, ":surnam"=>$surname, 
 ":emai"=>$email, ":passwor"=>$password, "phon"=>$phone));
 echo "<div class='alert alert-success'>Registro insertado con éxito</div>";
+}
     }catch(Exception $e){
         echo "Error de conexión ".$e->getMessage();
     }finally{
         $connect=null;
+
     }
 
 
@@ -76,5 +83,6 @@ echo "<div class='alert alert-success'>Registro insertado con éxito</div>";
         echo "<div class='alert alert-danger'>Las dos contraseñas no coinciden</div>";
      }
      }
+     
     }
 ?>
