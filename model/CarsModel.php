@@ -1,34 +1,67 @@
 <?php
 
-    class CarsModel{
-        private $db;
-        private $vehicles;
+    include_once "Car.php";
 
-        public function __construct(){
+    class CarsModel
+    {
 
-            require_once("DataBase.php");
-            $this->db=DataBase::conexion();
-            $this->vehicles=array();
+        public function __construct(){}
+
+        private static function getCarsArray(): array
+        {
+            $connexion = DataBase::connexion();
+
+            $result = $connexion->prepare("SELECT * FROM vehicles WHERE type = 'car'");
+            $result->execute(array());
+            return $result->fetchAll(PDO::FETCH_ASSOC);
         }
 
-        public function getVehicles(){
+        public function getObjectCars(): array
+        {
+            $carsArray = self::getCarsArray();
+            $carsObjectArray = [];
 
-            require("paginationCars.php");
-            $consult=$this->db->query("SELECT * FROM vehicles WHERE type = 'car' 
-            LIMIT $startFrom,$pageSize");
+            foreach ($carsArray as $car)
+            {
+                $carsObjectArray [] = new Car
+                (
+                    $car['id'],
+                    $car['brand'],
+                    $car['model'],
+                    $car['cv'],
+                    $car['year'],
+                    $car['type'],
+                    $car['transmission'],
+                    $car['fuel_type'],
+                    $car['capacity'],
+                    $car['price_per_day'],
+                    $car['image'],
+                );
 
-            while($rows=$consult->fetch(PDO::FETCH_ASSOC)){
-
-                $this->vehicles[]=$rows;
             }
-            return $this->vehicles;
+            return $carsObjectArray;
         }
-
-
-
-
-
     }
+
+
+//        public function getVehicles(){
+//
+//            require("paginationCars.php");
+//            $consult=$this->db->query("SELECT * FROM vehicles WHERE type = 'car'
+//            LIMIT $startFrom,$pageSize");
+//
+//            while($rows=$consult->fetch(PDO::FETCH_ASSOC)){
+//
+//                $this->vehicles[]=$rows;
+//            }
+//            return $this->vehicles;
+//        }
+//
+//
+//
+//
+//
+//    }
 
 
 

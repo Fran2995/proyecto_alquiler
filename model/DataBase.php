@@ -1,6 +1,6 @@
 <?php
     class DataBase{
-        public static function conexion(){
+        public static function connexion(){
 
 try{
     $conecction=new PDO("mysql:host=localhost; dbname=rent_vehicles",'root','');
