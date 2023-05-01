@@ -17,9 +17,7 @@ $pageSize=8;
     }
 
     $startFrom=($page-1)*$pageSize;
-    $sqlCars="SELECT * FROM vehicles WHERE type = 'van'";
-    $result=$connect->prepare($sqlCars);
-    $result->execute(array());
+    $result = DataBase::getVans();
     $numberOfRows=$result->rowCount();
     $pagesTotal=ceil($numberOfRows/$pageSize);
 
