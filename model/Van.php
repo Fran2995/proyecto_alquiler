@@ -1,8 +1,10 @@
 <?php
 
+include_once 'Vehicle.php';
+
 class Van extends Vehicle
 {
-    private $transsmision;
+    private $transmission;
     private $fuel;
     private $capacity;
 
@@ -14,7 +16,7 @@ class Van extends Vehicle
         $cv,
         $year,
         $type,
-        $transsmision,
+        $transmission,
         $fuel,
         $capacity,
         $price,
@@ -22,7 +24,7 @@ class Van extends Vehicle
     )
     {
         parent::__construct($id, $brand, $model, $cv, $year, $type, $price, $image);
-        $this->transsmision = $transsmision;
+        $this->transmission = $transmission;
         $this->fuel = $fuel;
         $this->capacity = $capacity;
     }
@@ -30,17 +32,17 @@ class Van extends Vehicle
     /**
      * @return mixed
      */
-    public function getTranssmision()
+    public function getTransmission()
     {
-        return $this->transsmision;
+        return $this->transmission;
     }
 
     /**
-     * @param mixed $transsmision
+     * @param mixed $transmission
      */
-    public function setTranssmision($transsmision): void
+    public function setTransmission($transmission): void
     {
-        $this->transsmision = $transsmision;
+        $this->transmission = $transmission;
     }
 
     /**

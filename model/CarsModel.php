@@ -12,9 +12,31 @@
             return DataBase::getCars();
         }
 
+        private static function getCarsArrayWhitPagination($startFrom, $pagesize): array
+        {
+            $connexion = DataBase::connexion();
+
+            return DataBase::getCarsWhitPagination($startFrom, $pagesize);
+        }
+
         public function getArrayOfObjectsCar(): array
         {
             $carsArray = self::getCarsArray();
+            return $this->extracted($carsArray);
+        }
+
+        public function getArrayOfObjectsCarWhitPagination($startFrom, $pagesize)
+        {
+            $carsArray = self::getCarsArrayWhitPagination($startFrom, $pagesize);
+            return $this->extracted($carsArray);
+        }
+
+        /**
+         * @param array $carsArray
+         * @return array
+         */
+        public function extracted(array $carsArray): array
+        {
             $carsObjectArray = [];
 
             foreach ($carsArray as $car) {
@@ -36,13 +58,4 @@
             return $carsObjectArray;
         }
     }
-
-
-
-
-
-
-
-
-
 ?>
