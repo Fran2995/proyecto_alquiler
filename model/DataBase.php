@@ -78,7 +78,9 @@ return $conecction;
         public static function setNewUser($name, $surname, $email, $phone, $password)
         {
             $connection = self::connexion();
-            $result = $connection->prepare("INSERT INTO users (name, surname, email, password, telephone, type) VALUES (:name, :surname, :email, :password, :phone, 'user')");
+            $result = $connection->prepare("INSERT INTO users 
+            (name, surname, email, password, telephone, type)
+            VALUES (:name, :surname, :email, :password, :phone, 'user')");
             $result->execute(array(":name"=>$name, ":surname"=>$surname,
                 ":email"=>$email, ":password"=>$password, "phone"=>$phone));
             $connection = null;

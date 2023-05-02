@@ -13,7 +13,6 @@ isset($_POST['phone']) && isset($_POST['password']) && isset($_POST['password2']
     $password = md5($_POST['password']);
     $password2 = md5($_POST['password2']);
 
-
     if(ValidationFormulary::nameValid($_POST['name']) &&
     ValidationFormulary::surnameValid($_POST['surname']) &&
     ValidationFormulary::emailValid($_POST['email']) &&
@@ -21,8 +20,13 @@ isset($_POST['phone']) && isset($_POST['password']) && isset($_POST['password2']
     ValidationFormulary::validPasswords($_POST['password'], $_POST['password2']) &&
     ValidationFormulary::emailUserExist($_POST['email']))
     {
-    DataBase::setNewUser($name, $surname, $email, $phone, $password);
-        echo "<div class='alert alert-success'>Registro insertado con éxito</div>";
+        if(isset($_POST['checkbox'])) {
+            DataBase::setNewUser($name, $surname, $email, $phone, $password);
+            echo "<div class='alert alert-success'>Registro insertado con éxito</div>";
+        }else
+        {
+            echo "<div class='alert alert-danger'>Debe aceptar los terminos de servicio</div>";
+        }
     }
 
 }
