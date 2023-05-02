@@ -15,13 +15,13 @@
     <nav class="navbar navbar-expand navbar-light bg-light">
         <ul class="nav navbar-nav">
             <li class="nav-item">
-                <a class="nav-link active" href="index.php" 
+                <a class="nav-link" href="index.php"
                 aria-current="page">Inicio<span 
                 class="visually-hidden">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="cars.php" 
-                aria-current="page">Coches<span 
+                <a class="nav-link" href="cars.php"
+                aria-current="page">Coches<span
                 class="visually-hidden">(current)</span></a>
             </li>
             <li class="nav-item">

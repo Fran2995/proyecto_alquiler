@@ -1,6 +1,6 @@
 <?php
 
-class Vehicle
+abstract class Vehicle
 {
     private $id;
     private $brand;
@@ -11,17 +11,17 @@ class Vehicle
     private $price;
     private $image;
 
-    public function __construct
-    (
-     $id,
-     $brand,
-     $model,
-     $cv,
-     $year,
-     $type,
-     $price,
-     $image
-    )
+    /**
+     * @param $id
+     * @param $brand
+     * @param $model
+     * @param $cv
+     * @param $year
+     * @param $type
+     * @param $price
+     * @param $image
+     */
+    public function __construct($id, $brand, $model, $cv, $year, $type, $price, $image)
     {
         $this->id = $id;
         $this->brand = $brand;
@@ -32,6 +32,7 @@ class Vehicle
         $this->price = $price;
         $this->image = $image;
     }
+
 
     /**
      * @return mixed
