@@ -1,20 +1,17 @@
 <?php
-include_once "Van.php";
+require_once "Van.php";
+require_once "DataBase.php";
 
 class VansModel
 {
 
     private static function getVansArray(): array
     {
-        $connexion = DataBase::connexion();
-
         return DataBase::getVans();
     }
 
     private static function getVansArrayWhitPagination($startFrom, $pagesize): array
     {
-        $connexion = DataBase::connexion();
-
         return DataBase::getVansWhitPagination($startFrom, $pagesize);
     }
 

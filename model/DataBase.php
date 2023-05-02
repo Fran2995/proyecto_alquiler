@@ -32,7 +32,7 @@ return $conecction;
         public static function getMotorbikes(): bool|array
         {
             $connection = self::connexion();
-            $result = $connection->prepare("SELECT * FROM vehicles WHERE type = 'motorbikes'");
+            $result = $connection->prepare("SELECT * FROM vehicles WHERE type = 'motorbike'");
             $result->execute(array());
             return $result->fetchAll(PDO::FETCH_ASSOC);
         }

@@ -1,20 +1,17 @@
 <?php
-include_once "Motorbike.php";
+require_once "Motorbike.php";
+require_once "DataBase.php";
 
 class MotorbikesModel
 {
 
     private static function getMotorbikesArray(): array
     {
-        $connexion = DataBase::connexion();
-
         return DataBase::getMotorbikes();
     }
 
     private static function getMotorbikesArrayWhitPagination($startFrom, $pagesize): array
     {
-        $connexion = DataBase::connexion();
-
         return DataBase::getMotorbikesWhitPagination($startFrom, $pagesize);
     }
 
@@ -30,29 +27,30 @@ class MotorbikesModel
         return $this->extracted($motorbikesArray);
     }
 
-        /**
-         * @param array $motorbikesArray
-         * @return array
-         */
-        public function extracted(array $motorbikesArray): array
-        {
-            $motorbikesObjectArray = [];
+    /**
+     * @param array $motorbikesArray
+     * @return array
+     */
+    public function extracted(array $motorbikesArray): array
+    {
+        $motorbikesObjectArray = [];
 
-            foreach ($motorbikesArray as $motorbike) {
-                $motorbikesObjectArray [] = new Motorbike
-                (
-                    $motorbike['id'],
-                    $motorbike['brand'],
-                    $motorbike['model'],
-                    $motorbike['cv'],
-                    $motorbike['year'],
-                    $motorbike['type'],
-                    $motorbike['price_per_day'],
-                    $motorbike['image'],
-                );
-            }
-            return $motorbikesObjectArray;
+        foreach ($motorbikesArray as $motorbike) {
+            $motorbikesObjectArray [] = new Motorbike
+            (
+                $motorbike['id'],
+                $motorbike['brand'],
+                $motorbike['model'],
+                $motorbike['cv'],
+                $motorbike['year'],
+                $motorbike['type'],
+                $motorbike['price_per_day'],
+                $motorbike['image'],
+            );
         }
+        return $motorbikesObjectArray;
+    }
 
 }
+
 ?>
