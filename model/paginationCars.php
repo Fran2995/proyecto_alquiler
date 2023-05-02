@@ -1,27 +1,23 @@
 <?php
 
-require_once("DataBase.php");
+include_once "CarsModel.php";
 
-$connect=DataBase::conexion();
+$pageSize = 8;
 
-$pageSize=8;
-
-    if(isset($_GET['page'])){
-        if($_GET['page']==1){
-            header("Location:cars.php");
-        }else{
-            $page=$_GET['page'];
-        }    
-    }else{
-        $page=1;
+if (isset($_GET['page'])) {
+    if ($_GET['page'] == 1) {
+        header("Location:cars.php");
+    } else {
+        $page = $_GET['page'];
     }
+} else {
+    $page = 1;
+}
 
-    $startFrom=($page-1)*$pageSize;
-    $sqlCars="SELECT * FROM vehicles WHERE type = 'car'";
-    $result=$connect->prepare($sqlCars);
-    $result->execute(array());
-    $numberOfRows=$result->rowCount();
-    $pagesTotal=ceil($numberOfRows/$pageSize);
-
-
+$vehicles = new CarsModel();
+$vehiclesTotal = $vehicles->getArrayOfObjectsCar();
+$startFrom = ($page - 1) * $pageSize;
+$numberOfRows = count($vehiclesTotal);
+$pagesTotal = ceil($numberOfRows / $pageSize);
+$vehiclesPagination = $vehicles->getArrayOfObjectsCarWhitPagination($startFrom, $pageSize);
 ?>

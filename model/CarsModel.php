@@ -1,38 +1,59 @@
 <?php
 
-    class CarsModel{
-        private $db;
-        private $vehicles;
+require_once "Car.php";
+require_once "DataBase.php";
 
-        public function __construct(){
+class CarsModel
+{
 
-            require_once("DataBase.php");
-            $this->db=DataBase::conexion();
-            $this->vehicles=array();
-        }
-
-        public function getVehicles(){
-
-            require("paginationCars.php");
-            $consult=$this->db->query("SELECT * FROM vehicles WHERE type = 'car' 
-            LIMIT $startFrom,$pageSize");
-
-            while($rows=$consult->fetch(PDO::FETCH_ASSOC)){
-
-                $this->vehicles[]=$rows;
-            }
-            return $this->vehicles;
-        }
-
-
-
-
-
+    private static function getCarsArray(): array
+    {
+        return DataBase::getCars();
     }
 
+    private static function getCarsArrayWhitPagination($startFrom, $pagesize): array
+    {
+        return DataBase::getCarsWhitPagination($startFrom, $pagesize);
+    }
 
+    public function getArrayOfObjectsCar(): array
+    {
+        $carsArray = self::getCarsArray();
+        return $this->extracted($carsArray);
+    }
 
+    public function getArrayOfObjectsCarWhitPagination($startFrom, $pagesize)
+    {
+        $carsArray = self::getCarsArrayWhitPagination($startFrom, $pagesize);
+        return $this->extracted($carsArray);
+    }
 
+    /**
+     * @param array $carsArray
+     * @return array
+     */
+    public function extracted(array $carsArray): array
+    {
+        $carsObjectArray = [];
 
+        foreach ($carsArray as $car) {
+            $carsObjectArray [] = new Car
+            (
+                $car['id'],
+                $car['brand'],
+                $car['model'],
+                $car['cv'],
+                $car['year'],
+                $car['type'],
+                $car['transmission'],
+                $car['fuel_type'],
+                $car['capacity'],
+                $car['price_per_day'],
+                $car['image'],
+            );
+        }
+        return $carsObjectArray;
+    }
+}
 
 ?>

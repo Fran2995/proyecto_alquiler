@@ -1,38 +1,58 @@
 <?php
+require_once "Van.php";
+require_once "DataBase.php";
 
-    class VansModel{
-        private $db;
-        private $vehicles;
+class VansModel
+{
 
-        public function __construct(){
-
-            require_once("DataBase.php");
-            $this->db=DataBase::conexion();
-            $this->vehicles=array();
-        }
-
-        public function getVehicles(){
-
-            require("paginationVans.php");
-            $consult=$this->db->query("SELECT * FROM vehicles WHERE type = 'van' 
-            LIMIT $startFrom,$pageSize");
-
-            while($rows=$consult->fetch(PDO::FETCH_ASSOC)){
-
-                $this->vehicles[]=$rows;
-            }
-            return $this->vehicles;
-        }
-
-
-
-
-
+    private static function getVansArray(): array
+    {
+        return DataBase::getVans();
     }
 
+    private static function getVansArrayWhitPagination($startFrom, $pagesize): array
+    {
+        return DataBase::getVansWhitPagination($startFrom, $pagesize);
+    }
 
+    public function getArrayOfObjectsVan(): array
+    {
+        $vansArray = self::getVansArray();
+        return $this->extracted($vansArray);
+    }
 
+    public function getArrayOfObjectsVanWhitPagination($startFrom, $pagesize)
+    {
+        $vansArray = self::getVansArrayWhitPagination($startFrom, $pagesize);
+        return $this->extracted($vansArray);
+    }
 
+    /**
+     * @param array $vansArray
+     * @return array
+     */
+    public function extracted(array $vansArray): array
+    {
+        $vansObjectArray = [];
 
+        foreach ($vansArray as $van) {
+            $vansObjectArray [] = new Van
+            (
+                $van['id'],
+                $van['brand'],
+                $van['model'],
+                $van['cv'],
+                $van['year'],
+                $van['type'],
+                $van['transmission'],
+                $van['fuel_type'],
+                $van['capacity'],
+                $van['price_per_day'],
+                $van['image'],
+            );
+        }
+        return $vansObjectArray;
+    }
+}
 
 ?>
