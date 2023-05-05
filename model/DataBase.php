@@ -86,7 +86,7 @@ return $conecction;
             $connection = null;
         }
 
-        public static function getNumberOfUserWhitAnEmail($email)
+        public static function getNumberOfUserByEmail($email)
         {
             $connection = self::connexion();
             $resultFind = $connection->prepare("SELECT email FROM users WHERE email = :email");
@@ -94,6 +94,25 @@ return $conecction;
             $numRowsFind = $resultFind->rowCount();
             $connection = null;
             return $numRowsFind;
+        }
+
+        public static function getUserByEmail($email)
+        {
+            $connection = self::connexion();
+            $result = $connection->prepare("SELECT * FROM users WHERE email = :email");
+            $result->execute(array(":email"=>$email));
+            $user = $result->fetchAll(PDO::FETCH_ASSOC);
+            $connection = null;
+            return $user;
+        }
+
+        public static function getAllUsers()
+        {
+            $connection = self::connexion();
+            $result = $connection->prepare("SELECT * FROM users WHERE type = 'user'");
+            $user = $result->fetchAll(PDO::FETCH_ASSOC);
+            $connection = null;
+            return $user;
         }
  }
 ?>

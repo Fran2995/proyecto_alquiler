@@ -87,7 +87,7 @@ class ValidationFormulary
 
     public static function emailUserExist($email):bool
     {
-    if(DataBase::getNumberOfUserWhitAnEmail($email) > 0)
+    if(DataBase::getNumberOfUserByEmail($email) > 0)
     {
         echo "<div class='alert alert-danger'>El usuario ya existe</div>";
         return false;

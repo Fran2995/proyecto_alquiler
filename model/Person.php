@@ -17,18 +17,16 @@ abstract class Person
      * @param $surname
      * @param $email
      * @param $password1
-     * @param $password2
      * @param $telephone
      * @param $type
      */
-    public function __construct($id, $name, $surname, $email, $password1, $password2, $telephone, $type)
+    public function __construct($id, $name, $surname, $email, $password, $telephone, $type)
     {
         $this->id = $id;
         $this->name = $name;
         $this->surname = $surname;
         $this->email = $email;
-        $this->password1 = $password1;
-        $this->password2 = $password2;
+        $this->password1 = $password;
         $this->telephone = $telephone;
         $this->type = $type;
     }
@@ -100,33 +98,17 @@ abstract class Person
     /**
      * @return mixed
      */
-    public function getPassword1()
+    public function getPassword()
     {
-        return $this->password1;
+        return $this->password;
     }
 
     /**
-     * @param mixed $password1
+     * @param mixed $password
      */
-    public function setPassword1($password1): void
+    public function setPassword($password): void
     {
-        $this->password1 = $password1;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPassword2()
-    {
-        return $this->password2;
-    }
-
-    /**
-     * @param mixed $password2
-     */
-    public function setPassword2($password2): void
-    {
-        $this->password2 = $password2;
+        $this->password = $password;
     }
 
     /**
