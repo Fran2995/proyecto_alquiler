@@ -3,7 +3,7 @@
 class ValidationFormulary
 {
 
-    public static function nameValid($name):bool
+    public function nameValid($name):bool
     {
         if($name == "")
         {
@@ -19,7 +19,7 @@ class ValidationFormulary
         return true;
     }
 
-    public static function surnameValid($surname):bool
+    public function surnameValid($surname):bool
     {
         if($surname == "")
         {
@@ -35,7 +35,7 @@ class ValidationFormulary
         return true;
     }
 
-    public static function emailValid($email):bool
+    public function emailValid($email):bool
     {
         if($email == "")
         {
@@ -50,7 +50,7 @@ class ValidationFormulary
         return true;
     }
 
-    public static function telephoneValid($phone):bool
+    public function telephoneValid($phone):bool
     {
         if($phone == "")
         {
@@ -65,7 +65,7 @@ class ValidationFormulary
         return true;
     }
 
-    public static function validPasswords($password1, $password2):bool
+    public function validPasswords($password1, $password2):bool
     {
         if($password1 == "" || $password2 == "")
         {
@@ -85,7 +85,7 @@ class ValidationFormulary
         return true;
     }
 
-    public static function emailUserExist($email):bool
+    public function emailUserExist($email):bool
     {
     if(DataBase::getNumberOfUserByEmail($email) > 0)
     {
