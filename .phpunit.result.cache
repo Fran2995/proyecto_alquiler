@@ -1,0 +1,1 @@
+{"version":1,"defects":{"tests\\ValidationFormularyTest::testValidName":3,"tests\\ValidationFormularyTest::testValidNameToFalse":3},"times":{"tests\\ValidationFormularyTest::testValidName":0.008,"tests\\ValidationFormularyTest::testValidNameToFalse":0}}

@@ -1,0 +1,3 @@
+<phpunit colors="true">
+    <!-- Resto de la configuración de PHPUnit -->
+</phpunit>
