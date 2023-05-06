@@ -1,9 +1,10 @@
 <?php
 
+namespace App;
 class ValidationFormulary
 {
 
-    public static function nameValid($name)
+    public function nameValid($name):bool
     {
         if($name == "")
         {
@@ -19,7 +20,7 @@ class ValidationFormulary
         return true;
     }
 
-    public static function surnameValid($surname)
+    public function surnameValid($surname):bool
     {
         if($surname == "")
         {
@@ -35,7 +36,7 @@ class ValidationFormulary
         return true;
     }
 
-    public static function emailValid($email)
+    public function emailValid($email):bool
     {
         if($email == "")
         {
@@ -50,7 +51,7 @@ class ValidationFormulary
         return true;
     }
 
-    public static function telephoneValid($phone)
+    public function telephoneValid($phone):bool
     {
         if($phone == "")
         {
@@ -65,7 +66,7 @@ class ValidationFormulary
         return true;
     }
 
-    public static function validPasswords($password1, $password2)
+    public function validPasswords($password1, $password2):bool
     {
         if($password1 == "" || $password2 == "")
         {
@@ -85,14 +86,13 @@ class ValidationFormulary
         return true;
     }
 
-    public static function emailUserExist($email)
+    public function emailUserExist($email):bool
     {
-    if(DataBase::getNumberOfUserWhitAnEmail($email) > 0)
+    if(DataBase::getNumberOfUserByEmail($email) > 0)
     {
         echo "<div class='alert alert-danger'>El usuario ya existe</div>";
         return false;
     }
     return true;
     }
-
 }

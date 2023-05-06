@@ -1,0 +1,1 @@
+{"version":1,"defects":{"App\\tests\\HolaMundoTest::testDiceHolaMundoCuandoSaluda":3,"tests\\ValidationFormularyTest::testValidName":4},"times":{"App\\tests\\HolaMundoTest::testDiceHolaMundoCuandoSaluda":0.006,"tests\\ValidationFormularyTest::testValidName":0.007}}

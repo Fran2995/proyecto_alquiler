@@ -78,13 +78,15 @@ return $conecction;
         public static function setNewUser($name, $surname, $email, $phone, $password)
         {
             $connection = self::connexion();
-            $result = $connection->prepare("INSERT INTO users (name, surname, email, password, telephone, type) VALUES (:name, :surname, :email, :password, :phone, 'user')");
+            $result = $connection->prepare("INSERT INTO users 
+            (name, surname, email, password, telephone, type)
+            VALUES (:name, :surname, :email, :password, :phone, 'user')");
             $result->execute(array(":name"=>$name, ":surname"=>$surname,
                 ":email"=>$email, ":password"=>$password, "phone"=>$phone));
             $connection = null;
         }
 
-        public static function getNumberOfUserWhitAnEmail($email)
+        public static function getNumberOfUserByEmail($email)
         {
             $connection = self::connexion();
             $resultFind = $connection->prepare("SELECT email FROM users WHERE email = :email");
@@ -92,6 +94,25 @@ return $conecction;
             $numRowsFind = $resultFind->rowCount();
             $connection = null;
             return $numRowsFind;
+        }
+
+        public static function getUserByEmail($email)
+        {
+            $connection = self::connexion();
+            $result = $connection->prepare("SELECT * FROM users WHERE email = :email");
+            $result->execute(array(":email"=>$email));
+            $user = $result->fetchAll(PDO::FETCH_ASSOC);
+            $connection = null;
+            return $user;
+        }
+
+        public static function getAllUsers()
+        {
+            $connection = self::connexion();
+            $result = $connection->prepare("SELECT * FROM users WHERE type = 'user'");
+            $user = $result->fetchAll(PDO::FETCH_ASSOC);
+            $connection = null;
+            return $user;
         }
  }
 ?>
