@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+//namespace App;
 class ValidationFormulary
 {
 
@@ -56,6 +56,7 @@ class ValidationFormulary
         if($phone == "")
         {
             echo "<div class='alert alert-danger'>Debe poner un teléfono</div>";
+            return false;
         }
         if(!is_numeric($phone) || strlen($phone) < 9
             || strlen($phone) > 9)
@@ -86,7 +87,7 @@ class ValidationFormulary
         return true;
     }
 
-    public function emailUserExist($email):bool
+    public function emailUserNoExist($email):bool
     {
     if(DataBase::getNumberOfUserByEmail($email) > 0)
     {
