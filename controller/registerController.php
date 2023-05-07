@@ -2,7 +2,7 @@
 
 require_once "ValidationFormulary.php";
 require_once "../model/DataBase.php";
-use App\ValidationFormulary;
+//use App\ValidationFormulary;
 
 if (isset($_POST['name']) && isset($_POST['surname']) && isset($_POST['email']) &&
 isset($_POST['phone']) && isset($_POST['password']) && isset($_POST['password2'])) {
@@ -20,7 +20,7 @@ isset($_POST['phone']) && isset($_POST['password']) && isset($_POST['password2']
     $validationFormulary->emailValid($_POST['email']) &&
     $validationFormulary->telephoneValid($_POST['phone']) &&
     $validationFormulary->validPasswords($_POST['password'], $_POST['password2']) &&
-    $validationFormulary->emailUserExist($_POST['email']))
+    $validationFormulary->emailUserNoExist($_POST['email']))
     {
         if(isset($_POST['checkbox'])) {
             DataBase::setNewUser($name, $surname, $email, $phone, $password);
