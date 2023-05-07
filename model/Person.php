@@ -6,8 +6,7 @@ abstract class Person
     private $name;
     private $surname;
     private $email;
-    private $password1;
-    private $password2;
+    private $password;
     private $telephone;
     private $type;
 
@@ -16,7 +15,7 @@ abstract class Person
      * @param $name
      * @param $surname
      * @param $email
-     * @param $password1
+     * @param $password
      * @param $telephone
      * @param $type
      */
@@ -26,7 +25,7 @@ abstract class Person
         $this->name = $name;
         $this->surname = $surname;
         $this->email = $email;
-        $this->password1 = $password;
+        $this->password = $password;
         $this->telephone = $telephone;
         $this->type = $type;
     }

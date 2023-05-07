@@ -3,14 +3,14 @@
         public static function connexion(){
 
 try{
-    $conecction=new PDO("mysql:host=localhost; dbname=rent_vehicles",'root','');
-    $conecction->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $connection=new PDO("mysql:host=localhost; dbname=rent_vehicles",'root','');
+    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 }catch(Exception $e){
     die ("Error de conexión con base de datos: ".$e->getMessage());
 
 }
-return $conecction;
+return $connection;
     }
 
     public static function getCars(): bool|array
@@ -75,7 +75,7 @@ return $conecction;
             return $resultFinal;
         }
 
-        public static function setNewUser($name, $surname, $email, $phone, $password)
+        public static function setNewUser($name, $surname, $email, $phone, $password): void
         {
             $connection = self::connexion();
             $result = $connection->prepare("INSERT INTO users 
@@ -86,7 +86,7 @@ return $conecction;
             $connection = null;
         }
 
-        public static function getNumberOfUserByEmail($email)
+        public static function getNumberOfUserByEmail($email): int
         {
             $connection = self::connexion();
             $resultFind = $connection->prepare("SELECT email FROM users WHERE email = :email");
@@ -96,17 +96,18 @@ return $conecction;
             return $numRowsFind;
         }
 
-        public static function getUserByEmail($email)
+        public static function getUserByEmail($email): array | false
         {
             $connection = self::connexion();
             $result = $connection->prepare("SELECT * FROM users WHERE email = :email");
             $result->execute(array(":email"=>$email));
-            $user = $result->fetchAll(PDO::FETCH_ASSOC);
+            $user = $result->fetch(PDO::FETCH_ASSOC);
+            $user;
             $connection = null;
             return $user;
         }
 
-        public static function getAllUsers()
+        public static function getAllUsers(): array | false
         {
             $connection = self::connexion();
             $result = $connection->prepare("SELECT * FROM users WHERE type = 'user'");
