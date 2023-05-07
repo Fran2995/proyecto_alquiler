@@ -13,10 +13,12 @@ session_start();
 
 
         if (!$user) {
-            echo "<div class='alert alert-danger' style='box-sizing: content-box;width: 40%;'>El usuario no existe</div>";
+            echo "<div class='alert alert-danger' 
+            style='box-sizing: content-box;width: 40%;'>El usuario no existe</div>";
         } else {
             if ($user->getPassword() != $passwordLogin) {
-                echo "<div class='alert alert-danger' style='box-sizing: content-box;width: 40%;'>La contraseña no es correcta</div>";
+                echo "<div class='alert alert-danger' 
+                style='box-sizing: content-box;width: 40%;'>La contraseña no es correcta</div>";
             } else {
                 $_SESSION['userName'] = $user->getName();
                 if(isset($_POST['rememberMe'])) {
