@@ -36,23 +36,39 @@ session_start();
 
 
         if (isset($_SESSION['userName']) || isset($_COOKIE['saveSession'])): ?>
-
+<div>
 <div align="right">
     <form method="post">
-<div class="container-fluid well span6">
-    <div class="row-fluid">
-        <div class="span2" >
-            <img src=templates/images/perfil.png height="60px" class="img-circle">
+        <div class="container-fluid well span6">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1 align="left" class="display-4">Alquiler de vehículos Pamplona</h1>
+                </div>
+                <div class="col-md-4">
+                    <img src="templates/images/perfil.png" height="60px" class="img-circle">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>
+                        <?php
+                        if (isset($_SESSION['userName'])) {
+                            echo $_SESSION['userName'];
+                        } else {
+                            echo $_COOKIE['saveSession'];
+                        }
+                        ?>
+                    </h4>
+                    <form method="post">
+                        <button type="submit" name="closeSession" class="btn btn-primary">Cerrar sesión</button>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="span8">
-            <h4><?php if (isset($_SESSION['userName'])) {echo $_SESSION['userName'];}
-                else {echo $_COOKIE['saveSession'];} ?></h4>
-            <button type="submit"  name="closeSession" class="btn btn-primary">Cerrar sesión</button>
-        </div>
-    </div>
-</div>
+
     </form>
 </div>
+
 
 <?php else: ?>
             <div class="mb-0" style= "float:right">

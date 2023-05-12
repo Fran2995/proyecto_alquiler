@@ -1,18 +1,18 @@
 <?php
 require_once "Van.php";
-require_once "DataBase.php";
+require_once "Database.php";
 
 class VansModel
 {
 
     private static function getVansArray(): array
     {
-        return DataBase::getVans();
+        return Database::getVans();
     }
 
     private static function getVansArrayWhitPagination($startFrom, $pagesize): array
     {
-        return DataBase::getVansWhitPagination($startFrom, $pagesize);
+        return Database::getVansWhitPagination($startFrom, $pagesize);
     }
 
     public function getArrayOfObjectsVan(): array

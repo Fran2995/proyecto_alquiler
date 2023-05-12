@@ -1,7 +1,7 @@
 <?php
 
 require_once "ValidationFormulary.php";
-require_once "../model/DataBase.php";
+require_once "../model/Database.php";
 //use App\ValidationFormulary;
 
 if (isset($_POST['name']) && isset($_POST['surname']) && isset($_POST['email']) &&
@@ -23,7 +23,7 @@ isset($_POST['phone']) && isset($_POST['password']) && isset($_POST['password2']
     $validationFormulary->emailUserNoExist($_POST['email']))
     {
         if(isset($_POST['checkbox'])) {
-            DataBase::setNewUser($name, $surname, $email, $phone, $password);
+            Database::setNewUser($name, $surname, $email, $phone, $password);
             echo "<div class='alert alert-success'>Registro insertado con éxito</div>";
         }else
         {

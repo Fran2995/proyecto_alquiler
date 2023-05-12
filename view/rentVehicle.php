@@ -19,7 +19,7 @@ if(isset($_POST['closeSession'])) {
 
 
 
-                                <form class="mx-1 mx-md-4" method="post">
+                                <form class="mx-1 mx-md-4" action="" method="post">
 
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fas fa-user fa-lg me-3 fa-fw"></i>
@@ -45,13 +45,12 @@ if(isset($_POST['closeSession'])) {
                                     require "../controller/RentVehicleController.php";
                                     if (isset($_POST['dateOfStart']) && isset($_POST['dateOfFinish'])) {
                                         $calculatePrice = new RentVehicleController();
-                                        $hoy = getdate();
-                                        $dia = $hoy['year'] . "-" . $hoy['mon'] . "-" . $hoy['mday'];
+                                        $today = getdate();
+                                        $todayFormat = $today['year'] . "-" . $today['mon'] . "-" . $today['mday'];
 
                                         try {
-                                            $total = $calculatePrice->calculatePrice($_POST['dateOfStart'],
+                                            $totalPrice = $calculatePrice->calculatePrice($_POST['dateOfStart'],
                                                 $_POST['dateOfFinish'], $_GET['price']);
-                                            echo $total;
                                         } catch (Exception $e) {
                                             echo "No se ha podido calcular el precio, intentalo de nuevo";
                                         }
@@ -63,17 +62,12 @@ if(isset($_POST['closeSession'])) {
                                             Calcular precio</button>
                                     </div>
 
-                                    <div class="form-check d-flex justify-content-center mb-5">
-                                        <input class="form-check-input me-2" type="checkbox" name="checkbox"
-                                               value="terminos" id="form2Example3c" />
-                                        <label class="form-check-label" for="form2Example3">
-                                            Acepto los <a href="termsAndConditions.html">Términos de servicio</a>
-                                        </label>
-                                    </div>
-
+                                    <?php if(isset($totalPrice) && $totalPrice): ?>
                                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                        <button type="submit" name="send" class="btn btn-primary btn-lg">Registrarse</button>
+                                        <a href="PayPage.php" class="btn btn-primary btn-lg active">
+                                            Ir a pago</a>
                                     </div>
+                                    <?php endif; ?>
 
                                 </form>
 

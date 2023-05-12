@@ -1,18 +1,18 @@
 <?php
 require_once "Motorbike.php";
-require_once "DataBase.php";
+require_once "Database.php";
 
 class MotorbikesModel
 {
 
     private static function getMotorbikesArray(): array
     {
-        return DataBase::getMotorbikes();
+        return Database::getMotorbikes();
     }
 
     private static function getMotorbikesArrayWhitPagination($startFrom, $pagesize): array
     {
-        return DataBase::getMotorbikesWhitPagination($startFrom, $pagesize);
+        return Database::getMotorbikesWhitPagination($startFrom, $pagesize);
     }
 
     public function getArrayOfObjectsMotorbike(): array
