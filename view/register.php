@@ -40,7 +40,7 @@
                     <div class="form-outline flex-fill mb-0">
                       <input type="email" name="email" id="form3Example3c" class="form-control"
                       value="<?php if(isset($_POST['email'])){echo $_POST['email'];}?>" />
-                      <label class="form-label" for="form3Example3c">Correo eléctronico</label>
+                      <label class="form-label" for="form3Example3c">Correo electrónico</label>
                     </div>
                   </div>
 
@@ -86,7 +86,7 @@
               </div>
               <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
 
-                <img src="templates/images/fondo_registro.avif"
+                <img src="templates/images/fondo_registro.jpg"
                   class="img-fluid" alt="Imagen de pareja en coche">
 
               </div>

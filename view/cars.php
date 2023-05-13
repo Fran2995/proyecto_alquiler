@@ -1,4 +1,5 @@
-<?php include("templates/header.php"); ?>
+<?php global $vehiclesPagination, $pagesTotal;
+include("templates/header.php"); ?>
     <source srcset="templates/images/view_cars.png" type="image/png">
     <img width="50%" style="margin:13px" src="templates/images/view_cars.jpg"
          class="img-fluid" alt="Fondo de audi a5">

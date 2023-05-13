@@ -1,19 +1,19 @@
 <?php
 
 require_once "Car.php";
-require_once "DataBase.php";
+require_once "Database.php";
 
 class CarsModel
 {
 
     private static function getCarsArray(): array
     {
-        return DataBase::getCars();
+        return Database::getCars();
     }
 
     private static function getCarsArrayWhitPagination($startFrom, $pagesize): array
     {
-        return DataBase::getCarsWhitPagination($startFrom, $pagesize);
+        return Database::getCarsWhitPagination($startFrom, $pagesize);
     }
 
     public function getArrayOfObjectsCar(): array
@@ -22,9 +22,9 @@ class CarsModel
         return $this->extracted($carsArray);
     }
 
-    public function getArrayOfObjectsCarWhitPagination($startFrom, $pagesize)
+    public function getArrayOfObjectsCarWhitPagination($startFrom, $pageSize): array
     {
-        $carsArray = self::getCarsArrayWhitPagination($startFrom, $pagesize);
+        $carsArray = self::getCarsArrayWhitPagination($startFrom, $pageSize);
         return $this->extracted($carsArray);
     }
 
