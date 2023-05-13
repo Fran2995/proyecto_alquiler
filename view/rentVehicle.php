@@ -44,13 +44,20 @@ if(isset($_POST['closeSession'])) {
                                     <?php
                                     require "../controller/RentVehicleController.php";
                                     if (isset($_POST['dateOfStart']) && isset($_POST['dateOfFinish'])) {
-                                        $calculatePrice = new RentVehicleController();
+                                        $vehicleController = new RentVehicleController();
                                         $today = getdate();
                                         $todayFormat = $today['year'] . "-" . $today['mon'] . "-" . $today['mday'];
 
                                         try {
-                                            $totalPrice = $calculatePrice->calculatePrice($_POST['dateOfStart'],
-                                                $_POST['dateOfFinish'], $_GET['price']);
+                                            $validDays = $vehicleController->validationDates($_POST['dateOfStart'],
+                                                $_POST['dateOfFinish']);
+                                            $isNotReserved = $vehicleController->isNotVehicleReserved($_POST['dateOfStart'],
+                                                $_POST['dateOfFinish'], $_GET['vehicleId']);
+                                            if($validDays && $isNotReserved) {
+                                                $totalPrice = $vehicleController->
+                                                calculatePrice($_POST['dateOfStart'],
+                                                    $_POST['dateOfFinish'], $_GET['price']);
+                                            }
                                         } catch (Exception $e) {
                                             echo "No se ha podido calcular el precio, intentalo de nuevo";
                                         }
@@ -64,7 +71,16 @@ if(isset($_POST['closeSession'])) {
 
                                     <?php if(isset($totalPrice) && $totalPrice): ?>
                                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                        <a href="PayPage.php" class="btn btn-primary btn-lg active">
+                                        <?php if (isset($_SESSION['userEmail'])) {
+                                            $userEmail = $_SESSION['userEmail'];
+                                        } elseif (isset($_COOKIE['saveSessionEmail'])){
+                                            $userEmail = $_COOKIE['saveSessionEmail'];
+                                        } ?>
+                                        <a href="PayPage.php?vehicleId=<?php echo
+                                            $_GET['vehicleId']."&dateOfStart=".$_POST['dateOfStart']."&dateOfFinish="
+                                            .$_POST['dateOfFinish']."&userEmail=".$userEmail
+                                            ."&totalPrice=".$totalPrice ?>"
+                                           class="btn btn-primary btn-lg active">
                                             Ir a pago</a>
                                     </div>
                                     <?php endif; ?>

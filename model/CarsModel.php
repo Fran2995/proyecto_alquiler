@@ -22,9 +22,9 @@ class CarsModel
         return $this->extracted($carsArray);
     }
 
-    public function getArrayOfObjectsCarWhitPagination($startFrom, $pagesize)
+    public function getArrayOfObjectsCarWhitPagination($startFrom, $pageSize): array
     {
-        $carsArray = self::getCarsArrayWhitPagination($startFrom, $pagesize);
+        $carsArray = self::getCarsArrayWhitPagination($startFrom, $pageSize);
         return $this->extracted($carsArray);
     }
 

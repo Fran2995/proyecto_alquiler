@@ -21,8 +21,10 @@ session_start();
                 style='box-sizing: content-box;width: 40%;'>La contraseña no es correcta</div>";
             } else {
                 $_SESSION['userName'] = $user->getName();
+                $_SESSION['userEmail'] = $user->getEmail();
                 if(isset($_POST['rememberMe'])) {
-                    setcookie("saveSession",$_SESSION['userName'] , time()+2592000, '/');
+                    setcookie("saveSessionName",$_SESSION['userName'] , time()+2592000, '/');
+                    setcookie("saveSessionEmail",$_SESSION['userEmail'] , time()+2592000, '/');
                 }
             }
         }
@@ -30,19 +32,20 @@ session_start();
 
     if(isset($_POST['closeSession'])) {
         session_destroy();
-        setcookie("saveSession", "nameOfSession", time()-1, '/');
+        setcookie("saveSessionName", "nameOfSession", time()-1, '/');
+        setcookie("saveSessionEmail", "nameOfSession", time()-1, '/');
         header("Location: " . $_SERVER['PHP_SELF']);
     }
 
 
-        if (isset($_SESSION['userName']) || isset($_COOKIE['saveSession'])): ?>
+        if (isset($_SESSION['userName']) || isset($_COOKIE['saveSessionName'])): ?>
 <div>
-<div align="right">
+<div style="text-align: right">
     <form method="post">
         <div class="container-fluid well span6">
             <div class="row">
                 <div class="col-md-8">
-                    <h1 align="left" class="display-4">Alquiler de vehículos Pamplona</h1>
+                    <h1 style="text-align: left" class="display-4">Alquiler de vehículos Pamplona</h1>
                 </div>
                 <div class="col-md-4">
                     <img src="templates/images/perfil.png" height="60px" class="img-circle">
@@ -54,8 +57,8 @@ session_start();
                         <?php
                         if (isset($_SESSION['userName'])) {
                             echo $_SESSION['userName'];
-                        } else {
-                            echo $_COOKIE['saveSession'];
+                        }else{
+                            echo $_COOKIE['saveSessionName'];
                         }
                         ?>
                     </h4>

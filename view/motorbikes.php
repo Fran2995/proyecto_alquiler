@@ -22,10 +22,11 @@ if($counter%4==0){
                 <b>Caballos: </b><?php echo $vehicle->getCv() ?><br/>
                 <b>Año: </b><?php echo $vehicle->getYear() ?><br/>
                 <b>Precio por día: </b><?php echo $vehicle->getPrice() ?></p>
-            <a href="<?php if(isset($_SESSION['userName']) || isset($_COOKIE['saveSession']))
+            <a href="<?php if(isset($_SESSION['userName']) || isset($_COOKIE['saveSessionName']))
             {echo "rentVehicle.php?brand=".$vehicle->getBrand()."&model=".$vehicle->getModel()
-                ."&image=".$vehicle->getImage()."&price=".$vehicle->getPrice();}
-            else {echo "register.php";} ?>" class="btn btn-primary"><?php if(isset($_SESSION['userName']) || isset($_COOKIE['saveSession'])) {echo "Alquilar";}
+                ."&image=".$vehicle->getImage()."&price=".$vehicle->getPrice()."&vehicleId=".$vehicle->getId();}
+            else {echo "register.php";} ?>" class="btn btn-primary"><?php if(isset($_SESSION['userName']) ||
+                    isset($_COOKIE['saveSessionName'])) {echo "Alquilar";}
                 else {echo "Ir a registro";} ?></a>
         </div>
     </div>

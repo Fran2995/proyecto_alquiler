@@ -9,12 +9,13 @@
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <div style="box-sizing: content-box;width: 40%;">
-    </div>
     <section class="vh-100" style="background-color: #eee;">
         <div class="container h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-lg-12 col-xl-11">
+                    <div style="box-sizing: content-box;width: 60%;">
+                        <?php require_once "../controller/payPageController.php"; ?>
+                    </div>
                     <div class="card text-black" style="border-radius: 25px;">
                         <div class="card-body p-md-5">
                             <div class="row justify-content-center">
@@ -29,56 +30,49 @@
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="text" name="name" id="form3Example1c" class="form-control"
-                                                       placeholder="Número de tarjeta de crédito"
-                                                       value="<?php if(isset($_POST['name'])){echo $_POST['name'];}?>"/>
-                                                <label class="form-label" for="form3Example1c"></label>
+                                                <input type="text" name="numberOfCard" id="form3Example1c" class="form-control"
+                                                       placeholder="0000-0000-0000-0000"
+                                                       value="<?php if(isset($_POST['numberOfCard'])){echo $_POST['numberOfCard'];}?>"/>
+                                                <label class="form-label" for="form3Example1c">Número de tarjeta</label>
                                             </div>
                                         </div>
 
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="text" name="surname" id="form3Example1c" class="form-control"
-                                                       placeholder="MM-YYYY"
-                                                       value="<?php if(isset($_POST['surname'])){echo $_POST['surname'];}?>" />
-                                                <label class="form-label" for="form3Example1c"></label>
+                                                <input type="text" name="expirationDate" id="form3Example1c" class="form-control"
+                                                       placeholder="MM-YY"
+                                                       value="<?php if(isset($_POST['expirationDate'])){echo $_POST['expirationDate'];}?>" />
+                                                <label class="form-label" for="form3Example1c">Caducidad</label>
                                             </div>
                                         </div>
 
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="text" name="email" id="form3Example3c" class="form-control"
+                                                <input type="text" name="cvv" id="form3Example3c" class="form-control"
                                                        placeholder="CVV"
-                                                       value="<?php if(isset($_POST['email'])){echo $_POST['email'];}?>" />
-                                                <label class="form-label" for="form3Example3c"></label>
+                                                       value="<?php if(isset($_POST['cvv'])){echo $_POST['cvv'];}?>" />
+                                                <label class="form-label" for="form3Example3c">Código de verificación</label>
                                             </div>
                                         </div>
 
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="text" name="phone" id="form3Example1c" class="form-control"
-                                                       placeholder="Nombre del titular"
-                                                       value="<?php if(isset($_POST['phone'])){echo $_POST['phone'];}?>" />
-                                                <label class="form-label" for="form3Example1c"></label>
-                                            </div>
-                                        </div>
-
-                                        <div class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                                            <div class="form-outline flex-fill mb-0">
-                                                <input type="" name="password" id="form3Example4c" class="form-control"
-                                                       placeholder="Caducidad"/>
-                                                <label class="form-label" for="form3Example4c"></label>
+                                                <input type="text" name="titularName" id="form3Example1c" class="form-control"
+                                                       placeholder="Nombre"
+                                                       value="<?php if(isset($_POST['titularName'])){echo $_POST['titularName'];}?>" />
+                                                <label class="form-label" for="form3Example1c">Nombre del titular</label>
                                             </div>
                                         </div>
 
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                            <button type="submit" name="send" style="margin-right: 100px"
-                                                    class="btn btn-secondary btn-lg">Cancelar</button>
-                                            <button type="submit" name="send" class="btn btn-success btn-lg">Pagar</button>
+                                            <a href="index.php" style="margin-right: 60px" class="btn btn-secondary btn-lg active">
+                                                Volver a inicio</a>
+                                            <button type="submit" name="send"
+                                                <?php if($payDone) {echo 'style="display: none;"';} ?>
+                                                    class="btn btn-success btn-lg">Pagar</button>
                                         </div>
 
 
@@ -87,7 +81,7 @@
                                 </div>
                                 <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
 
-                                    <img src="templates/images/fondo_registro.avif"
+                                    <img src="templates/images/fondo_registro.jpg"
                                          class="img-fluid" alt="Imagen de pareja en coche">
 
                                 </div>

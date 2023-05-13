@@ -14,30 +14,24 @@
 <header>   
     <nav class="navbar navbar-expand navbar-light bg-light">
         <ul class="nav navbar-nav">
-            <li class="nav-item">
+            <li class="nav-item" style="margin-right: 20px;">
                 <a class="nav-link" href="index.php"
                 aria-current="page">Inicio<span 
                 class="visually-hidden">(current)</span></a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" style="margin-right: 20px;">
                 <a class="nav-link" href="cars.php"
                 aria-current="page">Coches<span
                 class="visually-hidden">(current)</span></a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" style="margin-right: 20px;">
                 <a class="nav-link" href="vans.php">Furgonetas</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" style="margin-right: 20px;">
                 <a class="nav-link" href="motorbikes.php">Motos</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" style="margin-right: 20px;">
                 <a class="nav-link" href="register.php">Registrarse</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="aboutUs.php">Nuestra empresa</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="contact.php">Contacto</a>
             </li>
         </ul>
     </nav>

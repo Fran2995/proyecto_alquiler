@@ -12,7 +12,7 @@ class UserController
           return false;
       }
         return new User($user['id'], $user['name'], $user['surname'],
-            $user['email'], $user['password'], $user['telephone'], $user['type']);
+            $user['email'], $user['password'], $user['telephone']);
     }
 
 }
