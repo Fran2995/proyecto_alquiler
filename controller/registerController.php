@@ -2,7 +2,7 @@
 
 require_once "ValidationFormulary.php";
 require_once "../model/Database.php";
-//use App\ValidationFormulary;
+use App\ValidationFormulary;
 
 if (isset($_POST['name']) && isset($_POST['surname']) && isset($_POST['email']) &&
 isset($_POST['phone']) && isset($_POST['password']) && isset($_POST['password2'])) {

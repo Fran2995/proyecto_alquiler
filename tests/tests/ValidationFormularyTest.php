@@ -91,12 +91,4 @@ class ValidationFormularyTest extends TestCase
 
         $this->assertFalse($validationFormulary->validPasswords("", "456fasfrasd"));
     }
-
-    public function emailUserExist(): void
-    {
-        $validationFormulary = new ValidationFormulary();
-
-        $this->assertFalse($validationFormulary->validPasswords("", "456fasfrasd"));
-    }
-
 }

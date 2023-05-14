@@ -14,6 +14,5 @@ return array(
     'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src/Doctrine/Instantiator'),
     'Doctrine\\Deprecations\\' => array($vendorDir . '/doctrine/deprecations/lib/Doctrine/Deprecations'),
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
-    'App\\Tests\\' => array($baseDir . '/tests'),
-    'App\\' => array($baseDir . '/controller'),
+    'App\\' => array($baseDir . '/controller', $baseDir . '/tests'),
 );

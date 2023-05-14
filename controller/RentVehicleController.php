@@ -1,5 +1,11 @@
 <?php
 
+namespace App;
+
+use Database;
+use DateTime;
+use Exception;
+
 class RentVehicleController
 {
     /**

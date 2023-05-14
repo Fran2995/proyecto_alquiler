@@ -1,4 +1,7 @@
 <?php
+
+use App\RentVehicleController;
+
 include "templates/header.php";
 if(isset($_POST['closeSession'])) {
     header("Location: index.php");
