@@ -1,5 +1,7 @@
 <?php
 
+namespace App;
+
 class ValidationPayPage
 {
 
@@ -25,7 +27,8 @@ class ValidationPayPage
         }
         $pattern = "/^\d{2}-\d{2}$/";
         if(!preg_match($pattern, $expirationDate)) {
-            echo "<div class='alert alert-danger'>La fecha de caducidad debe tener un guión después del mes</div>";
+            echo "<div class='alert alert-danger'>La fecha de caducidad debe tener un guión después
+            del mes con dos números por mes y año</div>";
             return false;
         }
         return true;

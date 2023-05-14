@@ -1,5 +1,7 @@
 <?php
 
+use App\ValidationPayPage;
+
 require_once "ValidationPayPage.php";
 require_once "../model/Database.php";
 $payDone = false;

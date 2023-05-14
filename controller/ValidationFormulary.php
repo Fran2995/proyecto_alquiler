@@ -1,6 +1,8 @@
 <?php
 
-//namespace App;
+namespace App;
+use Database;
+
 class ValidationFormulary
 {
 
@@ -61,7 +63,7 @@ class ValidationFormulary
         if(!is_numeric($phone) || strlen($phone) < 9
             || strlen($phone) > 9)
         {
-            echo "<div class='alert alert-danger'>Debe poner un número válido</div>";
+            echo "<div class='alert alert-danger'>Debe poner un número de teléfono válido</div>";
             return false;
         }
         return true;
