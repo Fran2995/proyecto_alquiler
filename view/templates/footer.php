@@ -1,5 +1,5 @@
 <footer style="bottom: 0px;">
-  <p style="margin:13px; text-align: right" >Compañia creada por Francisco Hernández en colaboración con Ada y Félix &copy;2023</p>
+  <p style="margin:13px; text-align: right" >Compañía creada por Francisco Hernández en colaboración con Ada y Félix &copy;2023</p>
   </footer>
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
