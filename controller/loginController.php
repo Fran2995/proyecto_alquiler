@@ -11,7 +11,6 @@ session_start();
 
         $user = UserController::getObjectUserByEmail($emailLogin);
 
-
         if (!$user) {
             echo "<div class='alert alert-danger' 
             style='box-sizing: content-box;width: 40%;'>El usuario no existe</div>";
@@ -29,15 +28,12 @@ session_start();
             }
         }
     }
-
     if(isset($_POST['closeSession'])) {
         session_destroy();
         setcookie("saveSessionName", "nameOfSession", time()-1, '/');
         setcookie("saveSessionEmail", "nameOfSession", time()-1, '/');
         header("Location: " . $_SERVER['PHP_SELF']);
     }
-
-
         if (isset($_SESSION['userName']) || isset($_COOKIE['saveSessionName'])): ?>
 <div>
 <div style="text-align: right">
@@ -72,7 +68,6 @@ session_start();
     </form>
 </div>
 
-
 <?php else: ?>
             <div class="mb-0" style= "float:right">
                 <form method="post">
@@ -84,12 +79,11 @@ session_start();
                             role="button">Iniciar sesión</button>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="checkbox" id="" name="rememberMe" value="rememberMe">
-                        <label class="form-check-label" for="">recuérdame</label>
+                        <label class="form-check-label" for="">Recuérdame</label>
                     </div>
             </div>
             </form>
             </div>
             <h1 style="margin-left:13px"  class="display-4">Alquiler de vehículos Pamplona</h1>
 
-<?php endif;
-?>
+<?php endif; ?>

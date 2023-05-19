@@ -18,6 +18,5 @@ $vehicles = new MotorbikesModel();
 $vehiclesTotal = $vehicles->getArrayOfObjectsMotorbike();
 $startFrom = ($page - 1) * $pageSize;
 $numberOfRows = count($vehiclesTotal);
-$pagesTotal = ceil($numberOfRows / $pageSize);// No está llegando valor
+$pagesTotal = ceil($numberOfRows / $pageSize);
 $vehiclesPagination = $vehicles->getArrayOfObjectsMotorbikeWhitPagination($startFrom, $pageSize);
-?>

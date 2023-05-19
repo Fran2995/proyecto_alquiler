@@ -35,9 +35,5 @@
             </li>
         </ul>
     </nav>
-
                 <?php require("../controller/loginController.php"); ?>
-
-    
   </header>
-    

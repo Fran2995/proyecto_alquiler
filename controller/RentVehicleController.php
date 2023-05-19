@@ -40,7 +40,7 @@ class RentVehicleController
         if ($todayFormat > $start) {
 
             echo "<div class='alert alert-danger' style='box-sizing: content-box;width: 100%;'>
-                la fecha de recogida no puede ser menor a la actual (No alquilamos el DeLorean)</div>";
+                La fecha de recogida no puede ser menor a la actual (No alquilamos el DeLorean)</div>";
             return false;
         }
         return true;
@@ -66,5 +66,4 @@ class RentVehicleController
     }
         return true;
     }
-
 }

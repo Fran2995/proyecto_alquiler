@@ -1,4 +1,3 @@
-
 <div class="card" style="width:18rem;">
         <img height="60%" src="templates/images/<?php echo $vehicle->getImage(); ?>" class="card-img-top"
              alt="Imagen de coche">

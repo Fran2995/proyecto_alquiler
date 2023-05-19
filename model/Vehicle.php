@@ -161,7 +161,4 @@ abstract class Vehicle
     {
         $this->image = $image;
     }
-
-
-
 }

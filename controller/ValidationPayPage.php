@@ -13,7 +13,7 @@ class ValidationPayPage
         }
         $pattern = "/^\d{4}-\d{4}-\d{4}-\d{4}$/";
         if(!preg_match($pattern, $numberOfCard)) {
-            echo "<div class='alert alert-danger'>el número de tarjeta debe separarse por guiones cada 4 números</div>";
+            echo "<div class='alert alert-danger'>El número de tarjeta debe separarse por guiones cada 4 números</div>";
             return false;
         }
         return true;

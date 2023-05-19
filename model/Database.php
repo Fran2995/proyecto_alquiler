@@ -129,7 +129,7 @@ return $connection;
         public static function setNewVehicleReserve($userId, $vehicleId, $startDate, $endDate, $totalPrice): void
         {
             $connection = self::connexion();
-            $result = $connection->prepare("INSERT INTO reservations 
+            $result = $connection->prepare("INSERT INTO bookings 
             (user_id, vehicle_id, start_date, end_date, total_price)
             VALUES (:userId, :vehicleId, :startDate, :endDate, :totalPrice)");
             $result->execute(array(":userId"=>$userId, ":vehicleId"=>$vehicleId, ":startDate"=>$startDate,
@@ -140,7 +140,7 @@ return $connection;
         public static function getVehicleReservedById($vehicleId): bool|array
         {
             $connection = self::connexion();
-            $result = $connection->prepare("SELECT * FROM reservations WHERE vehicle_id = :vehicleId");
+            $result = $connection->prepare("SELECT * FROM bookings WHERE vehicle_id = :vehicleId");
             $result->execute(array(":vehicleId"=> $vehicleId));
             $reserve = $result->fetchAll(PDO::FETCH_ASSOC);
             $connection = null;

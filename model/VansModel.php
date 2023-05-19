@@ -54,5 +54,3 @@ class VansModel
         return $vansObjectArray;
     }
 }
-
-?>

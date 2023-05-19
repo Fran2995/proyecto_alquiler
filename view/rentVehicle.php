@@ -104,5 +104,4 @@ if(isset($_POST['closeSession'])) {
     </div>
 </section>
 <?php include "templates/footer.php"; ?>
-
 </div>

@@ -19,7 +19,6 @@ foreach ($vehiclesPagination as $position => $vehicle):
     }
 endforeach;
 
-
 echo '<ul style="margin-left:10px;" class="pagination">';
 for ($i = 1; $i <= $pagesTotal; $i++) {
     if (isset($_GET['page']) && $_GET['page'] == $i) {
@@ -30,12 +29,11 @@ for ($i = 1; $i <= $pagesTotal; $i++) {
         echo '<li class="page-item">';
     }
 
-
     echo '<a class="page-link" href="?page=' . $i . '">' . $i . '</a>';
     echo '</li>';
-
 }
 
 echo '</ul>';
 
 include("templates/footer.php"); ?>
+

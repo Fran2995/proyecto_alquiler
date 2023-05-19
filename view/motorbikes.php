@@ -1,10 +1,10 @@
-<?php include("templates/header.php");?>
+<?php global $vehiclesPagination, $pagesTotal;
+include("templates/header.php");?>
 <source srcset="templates/images/suzuki_fondo.jfif" type="image/png">
     <img width="50%" style="margin:13px" src="templates/images/suzuki_fondo.jfif" 
     class="img-fluid" alt="Fondo de moto">
 <?php
 require_once "../model/paginationMotorbikes.php";
-
 
 $counter=0;
 foreach($vehiclesPagination as $vehicle):
@@ -47,7 +47,6 @@ for($i=1; $i<=$pagesTotal; $i++){
     }else{
         echo '<li class="page-item">';
     }
-
 
         echo '<a class="page-link" href="?page='.$i.'">'.$i.'</a>';
         echo '</li>';
