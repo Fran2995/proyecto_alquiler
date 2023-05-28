@@ -30,6 +30,5 @@ isset($_POST['phone']) && isset($_POST['password']) && isset($_POST['password2']
             echo "<div class='alert alert-danger'>Debe aceptar los terminos de servicio</div>";
         }
     }
-
 }
 

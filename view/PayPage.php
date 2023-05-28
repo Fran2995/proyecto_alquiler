@@ -77,7 +77,6 @@
 
                                     <img src="templates/images/fondo_registro.jpg"
                                          class="img-fluid" alt="Imagen de pareja en coche">
-
                                 </div>
                             </div>
                         </div>

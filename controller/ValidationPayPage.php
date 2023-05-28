@@ -59,5 +59,4 @@ class ValidationPayPage
         }
         return true;
     }
-
 }

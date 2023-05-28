@@ -5,7 +5,6 @@ require "UserController.php";
 session_start();
 
     if(isset($_POST['emailLogin']) && isset($_POST['passwordLogin'])) {
-
         $emailLogin = $_POST['emailLogin'];
         $passwordLogin = md5($_POST['passwordLogin']);
 
@@ -67,7 +66,6 @@ session_start();
 
     </form>
 </div>
-
 <?php else: ?>
             <div class="mb-0" style= "float:right">
                 <form method="post">
@@ -85,5 +83,4 @@ session_start();
             </form>
             </div>
             <h1 style="margin-left:13px"  class="display-4">Alquiler de vehículos Pamplona</h1>
-
 <?php endif; ?>
